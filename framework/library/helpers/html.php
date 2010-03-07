@@ -23,7 +23,7 @@ class HtmlHelper{
 		$returnString.="\"";
 	// parametry dodatkowe takie jak style klasa etc
 		if(isset($htmlParams)){
-			foreach($htmlParams as $key -> $param){
+			foreach($htmlParams as $key => $param){
 				$returnString.=" ".$key."=\"".$param."\"";
 			}		
 		}

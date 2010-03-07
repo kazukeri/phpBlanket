@@ -15,7 +15,7 @@ class AuthComponent{
 		foreach($params as $key => $param){
 			$_SESSION["auth_".$key]= $param;
 		}
-		header("Location: ".FRAMEWORK);
+
 	}
 	function logout() {
 		session_destroy();

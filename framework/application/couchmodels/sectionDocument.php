@@ -1,7 +1,7 @@
 <?php 
-class itemDocument extends phpillowDocument
+class sectionDocument extends phpillowDocument
 {
-    protected static $type = 'news_entry';
+    protected static $type = 'section_entry';
 
     protected $requiredProperties = array(
         'title',
@@ -14,10 +14,7 @@ class itemDocument extends phpillowDocument
         	'_id'     => new phpillowStringValidator(),      
             'title'     => new phpillowStringValidator(),
             'text'      => new phpillowTextValidator(),
-        	'date'      => new phpillowTextValidator(),
-            'comments'  => new phpillowDocumentArrayValidator(
-                'myNewsComments'
-            ),
+        'date'      => new phpillowTextValidator(),
         );
 
         parent::__construct();

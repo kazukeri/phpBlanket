@@ -1,21 +1,21 @@
 <?php 
 
-class itemView extends phpillowView
-{// Index blog entries by their title, and list all comments
+class sectionView extends phpillowView
+{
     protected $viewDefinitions = array(
         
         'all2' => 'function( doc )
 {
-    if ( doc.type == "news_entry" )
+    if ( doc.type == "section_entry" )
     {
-		emit( doc.date, {title: doc.title,text: doc.text, date:doc.date, id:doc._id, rev:doc._rev} );
+		emit( doc.date, {title: doc.title,text: doc.text, id:doc._id, date:doc.date, rev:doc._rev} );
     }
 }',
         'single' => 'function( doc )
 {
-    if ( doc.type == "news_entry" )
+    if ( doc.type == "section_entry" )
     {
-		emit( doc._id, {title: doc.title,text: doc.text, date:doc.date, id:doc._id, rev:doc._rev} );
+		emit( doc._id, {title: doc.title,text: doc.text, id:doc._id, date:doc.date, rev:doc._rev} );
     }
 }',    
     );
@@ -36,7 +36,7 @@ class itemView extends phpillowView
  */
     protected function getViewName()
     {
-        return 'news_entry';
+        return 'section_entry';
     }
 
 }

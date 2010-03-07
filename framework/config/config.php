@@ -19,3 +19,5 @@ define('CDB_PASSWORD', '');
 define('CDB_HOST', '127.0.0.1');
 define('CDB_PORT', '5984');
 define('CDB_NAME', 'baza'); //nazwa bazy
+			phpillowConnection::createInstance(CDB_HOST, CDB_PORT, CDB_USER, CDB_PASSWORD);
+			phpillowConnection::setDatabase( CDB_NAME );

@@ -1,9 +1,10 @@
 <?php
 
-class UsersController extends Controller {
+class UsersController extends AppController {
 
 	public $helpers = array('Html','Form');
 	public $components = array('Auth');
+	public $uses = array('User','Section');
 	
 	function view($id = null,$name = null) {
 	
@@ -29,7 +30,9 @@ class UsersController extends Controller {
 				$sessionData['login'] = $wynik[0]['values']['login'];
 				$sessionData['cos'] = "coscos";
 				
-				$this->Auth->login($sessionData);			
+				$this->Auth->login($sessionData);
+				$this->setMessage("Zalogowano");
+				$this->redirect(array("controller"=>"items","view"=>"index"));							
 			}
 		}
 		/*
@@ -43,7 +46,8 @@ class UsersController extends Controller {
 	function logout() {
 
 		$this->Auth->logout();
-
+		$this->setMessage("Wylogowano");
+		$this->redirect(array("controller"=>"items","view"=>"index"));
 		
 	}	
 

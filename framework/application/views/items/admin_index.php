@@ -6,7 +6,10 @@
 	</th>
 	<th>
 	Treść
-	</th>	
+	</th>
+	<th>
+	Data
+	</th>		
 	<th>
 	Akcje
 	</th>		
@@ -20,6 +23,13 @@
 		<?php echo  $wynik[$ii]['value']['text']; ?>
 	</td>
 	<td>
+		<?php echo  date("d.m.Y", $wynik[$ii]['value']['date'])." r."; ?>
+		
+	</td>	
+	<td>
+				<?php echo $html->link("Usuń",array('controller'=>'items','view'=>'admin_delete','param'=>$wynik[$ii]['value']['id']."/".$wynik[$ii]['value']['rev'])); ?> 
+				 / 
+				<?php echo $html->link("Zmień",array('controller'=>'items','view'=>'admin_edit','param'=>$wynik[$ii]['value']['id']."/".$wynik[$ii]['value']['rev'])); ?> 
 
 	</td>	
 </tr>

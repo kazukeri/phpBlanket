@@ -5,7 +5,7 @@ class Model extends SQLQuery {
 	function __construct() {
 
 		if(DB_TYPE=="couchdb"){
-			$this->couchConnect(CDB_HOST,CDB_USER,CDB_PASSWORD,CDB_PORT,CDB_NAME);
+	//		$this->couchConnect(CDB_HOST,CDB_USER,CDB_PASSWORD,CDB_PORT,CDB_NAME);
 		}else{
 			$this->connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 		}

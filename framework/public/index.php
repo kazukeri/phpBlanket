@@ -7,10 +7,12 @@ $autoloadPillow = require ( $base =dirname( dirname( __FILE__ )) . '/db/phpillow
 foreach ( $autoloadPillow as $file ){
 	require_once $base . $file;
 }
+
 //pliki widokow couch i dokumentow couch
 foreach(glob(dirname( dirname( __FILE__ ))."/application/couchmodels/*.php") as $class_filename) {
      require_once($class_filename);
 }
+
 //componentow np auth
 foreach(glob(dirname( dirname( __FILE__ ))."/application/components/*.php") as $class_filename) {
      require_once($class_filename);

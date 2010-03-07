@@ -35,12 +35,16 @@ class FormHelper{
 	}
 	//przycisk potwierdzenia
 	function submit($string = "Submit"){//tekst na przycisku
-		return "<input type=\"submit\" value=\"".$string."\">";
+		return "<input class=\"submit\" type=\"submit\" value=\"".$string."\">";
 	}	
 
 	//pole tekstowe
-	function text($id,$value = null,$htmlParams = null){
-		$returnString = "<input type=\"text\"";
+	function text($id,$value = null,$htmlParams = null,$label = null){
+		$returnString = "";
+		if(isset($label)){
+			$returnString.="<label for='$id' class='".$id."_label'> ".$label."</label>";
+		}	
+		$returnString.= "<input type=\"text\"";
 		if(isset($id)){
 			$returnString.=" name=\"".$id."\"";
 		}	
@@ -48,15 +52,41 @@ class FormHelper{
 			$returnString.=" value=\"".$value."\"";
 		}	
 		if(isset($htmlParams)){
-			foreach($htmlParams as $key -> $param){
+			foreach($htmlParams as $key => $param){
 				$returnString.=" ".$key."=\"".$param."\"";
 			}
 		}
 		$returnString .= ">";	
 		return $returnString;	
 	}
-	function password($id,$value = null,$htmlParams = null){
-		$returnString = "<input type=\"password\"";
+	function textArea($id,$value = null,$htmlParams = null,$label = null){
+		$returnString = "";
+		if(isset($label)){
+			$returnString.="<label for='$id' class='".$id."_label'> ".$label."</label>";
+		}	
+		$returnString .= "<textarea type=\"text\"";
+		if(isset($id)){
+			$returnString.=" name=\"".$id."\"";
+		}	
+
+		if(isset($htmlParams)){
+			foreach($htmlParams as $key => $param){
+				$returnString.=" ".$key."=\"".$param."\"";
+			}
+		}
+		$returnString .= ">";	
+		if(isset($value)){
+			$returnString.=$value;
+		}			
+		$returnString .= "</textarea>";	
+		return $returnString;	
+	}	
+	function password($id,$value = null,$htmlParams = null,$label = null){
+		$returnString = "";
+		if(isset($label)){
+			$returnString.="<label for='$id' class='".$id."_label'> ".$label."</label>";
+		}		
+		$returnString .= "<input type=\"password\"";
 		if(isset($id)){
 			$returnString.=" name=\"".$id."\"";
 		}	
@@ -64,9 +94,29 @@ class FormHelper{
 			$returnString.=" value=\"".$value."\"";
 		}	
 		if(isset($htmlParams)){
-			foreach($htmlParams as $key -> $param){
+			foreach($htmlParams as $key => $param){
 				$returnString.=" ".$key."=\"".$param."\"";
 			}		
+		}
+		$returnString .= ">";	
+		return $returnString;	
+	}	
+	function hidden($id,$value = null,$htmlParams = null,$label = null){
+		$returnString = "";
+		if(isset($label)){
+			$returnString.="<label for='$id' class='".$id."_label'> ".$label."</label>";
+		}	
+		$returnString.= "<input type=\"hidden\"";
+		if(isset($id)){
+			$returnString.=" name=\"".$id."\"";
+		}	
+		if(isset($value)){
+			$returnString.=" value=\"".$value."\"";
+		}	
+		if(isset($htmlParams)){
+			foreach($htmlParams as $key => $param){
+				$returnString.=" ".$key."=\"".$param."\"";
+			}
 		}
 		$returnString .= ">";	
 		return $returnString;	

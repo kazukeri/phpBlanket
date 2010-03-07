@@ -7,8 +7,11 @@ class SQLQuery {
     /** Connects to database **/
     //COUCHDB
     function couchConnect($address, $account, $pwd, $port,$db) {
-		phpillowConnection::createInstance($address, $port, $account, $pwd);
-		phpillowConnection::setDatabase( $db );
+ //   var_dump (phpillowConnection::getDatabase());
+    //	if(phpillowConnection::getDatabase() === null){
+
+    //	}
+    	
     }
     function couchQuery($couchViewType,$parametersArray){
     	$className = strtolower(get_class($this))."View";
@@ -21,13 +24,26 @@ class SQLQuery {
     	$className = strtolower(get_class($this))."Document";
 	    $classObject = new $className; 
 	    
+    	if(isset($data["_id"])){
+	    	$classObject = $classObject->fetchById($data["_id"]);
+	    }	 
+	    
 	    foreach($fields as $key => $one_data){
 	    	$classObject->$one_data = $data[$one_data];
 	    }		
 		
 		$classObject->save();
     }
-    
+   
+    function couchDelete($id,$rev){
+//		phpillowConnection::__call("delete","");
+        $db = phpillowConnection::getInstance();
+        $response = $db->__call( "delete",array(0=>
+            phpillowConnection::getDatabase() . urlencode( $id ) . "?rev=".$rev)
+        );
+
+		
+    }    
  	//MYSQL    
     function connect($address, $account, $pwd, $name) {
         $this->_dbHandle = @mysql_connect($address, $account, $pwd);
