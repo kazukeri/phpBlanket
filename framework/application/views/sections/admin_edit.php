@@ -1,5 +1,5 @@
-<h2>Zmień aktualność</h2>
-<?php echo $form->start(array('controller'=>'sections','view'=>'admin_add')); ?>
+<h2>Zmień dział</h2>
+<?php echo $form->start(array('controller'=>'sections','view'=>'admin_edit')); ?>
 
 <?php echo $form->hidden("_id",$wynik['value']['id']); ?>
 <?php echo $form->hidden("_rev",$wynik['value']['rev']); ?>
@@ -8,7 +8,7 @@
 <br/>
 <?php echo $form->textArea("text",$wynik['value']['text'],array('class'=>'text_area'),"Treść"); ?>
 <br/><br/>
-<?php echo $form->submit("Dodaj"); ?>
+<?php echo $form->submit("Zmień"); ?>
 
 <?php echo $form->end(); ?>
 <h3>
